@@ -12,8 +12,6 @@ console.log(`Is debug: ${debug}`);
 
 const envModule = {
   NODE_ENV: process.env.NODE_ENV,
-  TAGO_API: null,
-  TAGO_REALTIME: null,
 };
 
 const plugins = [
@@ -24,11 +22,26 @@ const plugins = [
     filename: 'index.html',
   }),
   new webpack.EnvironmentPlugin(envModule),
+  new webpack.optimize.CommonsChunkPlugin({
+		name: 'react',
+	}),
+  new webpack.optimize.CommonsChunkPlugin({
+		name: 'react-dom',
+	}),
+  new webpack.optimize.CommonsChunkPlugin({
+		name: 'highcharts',
+	}),
+  new webpack.optimize.CommonsChunkPlugin({
+		name: 'leaflet',
+	}),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'react-leaflet',
+  }),
 ];
 
 const entry = {
   app: ['./index.jsx', 'babel-polyfill'],
-  vendor: ['react', 'react-dom'],
+  vendor: ['react', 'react-dom', 'highcharts', 'leaflet', 'react-leaflet'],
 };
 
 if (debug) {
