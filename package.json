@@ -1,0 +1,58 @@
+{
+  "name": "sample-module-chunck",
+  "version": "1.0.0",
+  "description": "sample-module-chunck",
+  "main": "index.js",
+  "scripts": {
+    "build:_init": "rm -rf __build__/ && mkdir -p __build__/ && cp -R assets/root/* __build__/",
+    "build": "npm run build:_init && webpack --progress --display-modules --display-chunks -v",
+    "build:watch": "npm run build:_init && node server",
+    "check:lint": "eslint --ext .jsx,.js . --fix",
+    "upgrade": "ncu -u && npm install",
+    "check:libs": "ncu"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^.+\\.(css|scss|png)$": "<rootDir>/script/module-mapper.js"
+    }
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-react-html-attrs": "^2.0.0",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-decorators-legacy": "1.3.4",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-react": "6.24.1",
+    "babel-preset-stage-0": "6.24.1",
+    "css-loader": "0.28.7",
+    "eslint": "4.6.1",
+    "eslint-config-airbnb": "15.1.0",
+    "eslint-config-airbnb-base": "12.0.0",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jasmine": "2.8.4",
+    "eslint-plugin-jsx-a11y": "6.0.2",
+    "eslint-plugin-react": "7.3.0",
+    "html-webpack-plugin": "^2.30.1",
+    "json-loader": "0.5.7",
+    "node-sass": "4.5.3",
+    "npm-check-updates": "2.12.1",
+    "react-addons-shallow-compare": "15.6.0",
+    "react-addons-test-utils": "15.6.0",
+    "sass-loader": "6.0.6",
+    "style-loader": "0.18.2",
+    "sw-precache-webpack-plugin": "0.11.4",
+    "url-loader": "0.5.9",
+    "webpack": "3.5.5",
+    "webpack-bundle-analyzer": "2.9.0",
+    "webpack-dev-middleware": "1.12.0",
+    "webpack-hot-middleware": "2.18.2"
+  },
+  "dependencies": {
+    "react": "15.6.1",
+    "react-dom": "15.6.1",
+    "sample-submodule-chunck": "git+ssh://git@github.com/emirdeliz/sample-submodule-chunck"
+  }
+}
